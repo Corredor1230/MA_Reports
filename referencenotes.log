@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.10.15)  21 OCT 2024 16:01
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.10.15)  22 OCT 2024 21:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -507,7 +507,7 @@ Package rerunfilecheck Info: File `referencenotes.out' has not changed.
 Here is how much of TeX's memory you used:
  12375 strings out of 409028
  261676 string characters out of 5756313
- 697259 words of memory out of 5000000
+ 699259 words of memory out of 5000000
  34954 multiletter control sequences out of 15000+600000
  560004 words of font info for 55 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
