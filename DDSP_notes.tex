@@ -9,9 +9,15 @@
     \item Classic signal processing elements with deep learning methods
     \item Models that rely on strided convolution or windowing (STFT)
     need to align waveshapes or suffer from spectral leakage.
-\end{itemize}
+    \item DDSP takes the approach of vocoders in using oscillators to
+    synthesize signals.
+    \item According to the DDSP paper \cite{DDSP}, the DDSP library is capable
+    of extrapolating timbres not seen during training, and independent control
+    over pitch and loudness during synthesis.
+    \item References to Neural Source Filter \cite{neuralsourcefilter} imply
+    this might be a good additional reference for research.
 
-\subsection{How it relates to my research}
+\end{itemize}
 
 \subsection{Newly learned concepts from this document}
 
@@ -26,5 +32,9 @@
     Feeding back the correct answers into training algorithms 
     to reduce training times and lead the model in the right direction during training.
 
-    \item 
+    \item Automatic differentiation:
+    
+    Also: 'algorithmic differentiation' or 'computational differentiation'
 \end{itemize}
+
+\subsection{How it relates to my research}

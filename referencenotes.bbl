@@ -5,4 +5,10 @@ J.~Engel, L.~H. Hantrakul, C.~Gu, and A.~Roberts, ``Ddsp: Differentiable
   digital signal processing,'' in {\em International Conference on Learning
   Representations}, 2020.
 
+\bibitem{neuralsourcefilter}
+X.~Wang, S.~Takaki, and J.~Yamagishi, ``Neural source-filter-based waveform
+  model for statistical parametric speech synthesis,'' in {\em ICASSP 2019-2019
+  IEEE International Conference on Acoustics, Speech and Signal Processing
+  (ICASSP)}, pp.~5916--5920, IEEE, 2019.
+
 \end{thebibliography}
