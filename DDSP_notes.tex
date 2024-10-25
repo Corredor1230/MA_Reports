@@ -34,7 +34,36 @@
 
     \item Automatic differentiation:
     
-    Also: 'algorithmic differentiation' or 'computational differentiation'
+    Also: 'algorithmic differentiation' or 'computational differentiation' means splitting
+    derivatives into simpler operations using the chain rule.
+
+    \item Deterministic autoencoder
+    \item Adversarial training
+    \item Variational inference
+    \item Jacobian design
+    \item Stochastic latents
+    \item CREPE model
+    \item Latent encoding
 \end{itemize}
 
 \subsection{How it relates to my research}
+
+I believe the general structure and inner workings of the proposed DDSP synthesizer from the paper
+are exactly how I need to model my own synthesizer.
+
+The proposed system requires an audio database to train the machine learning model
+and then use that model to extract the required features to build a faithful additive
+synthesizer. What's interesting about this system is that it allows for the creation
+of timbres beyond the training set, meaning that theoretically, if my training database
+consists of a collection of plucked string samples, I could interpolate timbres between them
+or exaggerate some of their features beyond what I have already recorded.
+
+Since this model has been tested with longer audio samples,
+so far a lot of the development has been using audio sampled at 
+relatively low sample rates (in the range of the 16kHz sample rate).
+However, due to the narrow scope of my project, I believe I should be able to use
+samples recorded at higher sample rates and generate high-quality output.
+
+Another interesting aspect of the DDSP library is that it allows for 
+flexible scalability. Meaning, I could generate consistent output with very few
+parameters and relatively low computational power.

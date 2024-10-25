@@ -20,23 +20,51 @@
 \section*{近況}
 % Write your recent findings here.
 \begin{itemize}
-\item \cite{DDSP}を読みましたが、やはり不明な概念が多すぎる
+    \item テオドール・アドルノの「啓蒙の弁証法」を読み始め、色々考えている。
+    \item 容赦ないの暑い天気がようやく許しを与え、また長い散歩に出かけている。
 \end{itemize} 
 
 \section*{やったこと}
-% Write your recent progress here.
-Integer varius orci ut erat varius, sit amet varius nunc scelerisque.
+\begin{itemize}
+    \item 前回の２０１７年の筆者のJesse EngelはDDSPというプロジェクトの担当の方だと
+    調べて、二つの２０２０年\cite{DDSP} と２０２２年\cite{DDSP2022} の文献を見つけて読みました。
+    \item \cite{DDSP2022}を読んだが、やはり不明な概念が多すぎるため、
+    それらをリストに書き、一つずつの定義を確認している。
+    \begin{itemize}
+        \item Strided Convolution (ストライド畳み込み)
+        \item Teacher forcing (教師強制)
+        \item Automatic differentiation (自動微分)
+        \item Deterministic autoencoder (決定論的オートエンコーダー)
+        \item Adversarial training (敵対的訓練)
+        \item Jacobian design (ヤコビアン設計)
+        \item Stochastic latents (確率的潜在変数)
+        \item CREPE model
+    \end{itemize}
+    
+\end{itemize}
 
 \section*{考えていること}
-% Write the analysis of your progress here.
-Curabitur sit amet urna ut sapien ultrices scelerisque ut nec libero.
+DDSPの文献を読んだら、二つの大事なことに気づいた。
+
+一つは自分の機械学習についての知識の足りなさである。理解できない専用語が山ほどありながら、
+研究を行うのも難しくなるに違いないので、その分野の基礎的な概念を勉強する必要があると
+思う。
+
+もう一つはこの研究を行うためにはゼロから開発する必要があるコードの量は意外と少ないということである。
+やはりDDSPの文献を発表した研究者はもうすでに役に立つライブラリーをGithubにアップロードして、
+OpenSourceであるため、すぐに利用できると思う。
+
+モデルのトレーニングコードやチュートリアルも全てレポシトリーに載せているので、
+楽器のサンプルさえあれば、すぐトレーニング始められる状態である。
 
 \section*{やること}
 % Outline future steps here.
-Mauris malesuada lacinia lacus, at laoreet ligula pellentesque vel.
+\begin{itemize}
+    \item 
+\end{itemize}
 
 % Add your bibliography here.
 \bibliography{../ref}
-\bibliographystyle{ieeetr}
+\bibliographystyle{apalike}
 
 \end{document}

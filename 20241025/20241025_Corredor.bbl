@@ -1,8 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{}
 
-\bibitem{DDSP}
-J.~Engel, L.~H. Hantrakul, C.~Gu, and A.~Roberts, ``Ddsp: Differentiable
-  digital signal processing,'' in {\em International Conference on Learning
-  Representations}, 2020.
+\bibitem[Engel et~al., 2020]{DDSP}
+Engel, J., Hantrakul, L.~H., Gu, C., and Roberts, A. (2020).
+\newblock Ddsp: Differentiable digital signal processing.
+\newblock In {\em International Conference on Learning Representations}.
+
+\bibitem[Wu et~al., 2022]{DDSP2022}
+Wu, Y., Manilow, E., Deng, Y., Swavely, R.~J., Kastner, K., Cooijmans, T.,
+  Courville, A., Huang, A., and Engel, J. (2022).
+\newblock Midi-ddsp: Hierarchical modeling of music for detailed control.
 
 \end{thebibliography}
