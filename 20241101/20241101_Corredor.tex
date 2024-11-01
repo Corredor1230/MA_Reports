@@ -1,0 +1,61 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２４年１１月１日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 最近、Audacity4.0の開発についての記事を読んで、GitHubをCloneしてみたら、
+    参加したいなと思ってきたので、暇な時間には少しいじって始めました。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item アコースティックギターの録音を始めました。
+    \item DDSPのGithubからライブラリーをダウンロードし、テストし始めました。 \cite{DDSP}
+    \item 撥弦楽器に集中する自分のプロジェクトと似ているシンセサイザーまたは研究文献を
+    探し続けているものの、今までは見つけられないため、このまま進んでも大丈夫かと思ってきました。
+    \item \cite{DDSP_Piano}においての研究は特にピアノのポリフォニーを生成できるシンセサイザーに
+    焦点を当てている。
+    \item \cite{DDSP_Traditional}はエレキバスから韓国のコムンゴを生成できるシンセサイザーに
+    焦点を当てている。
+    \item \cite{DDSP_Guitar_Polyphonic}はアコースティックギターのDDSPシンセサイザーで
+    ポリフォニーを作るのに焦点を当てている。
+\end{itemize}
+
+\section*{考えていること}
+
+DDSPの発表以来、人気が上がってきて、いくつかの興味深いプロジェクトも
+毎年生み出されていることを確かめることができた。しかし、録音されたオーディオの処理と
+演奏で使用できるシンセサイザーの開発はかなり異なるため、出力の質は特に気になる。
+
+このプロジェクトの目標は弾くのが楽しいシンセサイザー、作曲家やサウンドデザイナーが利用できる
+ソフトウェアを開発するであるため、DDSPシンセサイザーはどれぐらい楽器として使用できるかも考慮する必要がある。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item DDSPのライブラリーの勉強を続ける
+    \item デジタル楽器のデザインや使用についての参考を探す
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}
