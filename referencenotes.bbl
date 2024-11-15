@@ -1,14 +1,27 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{}
 
-\bibitem{DDSP}
-J.~Engel, L.~H. Hantrakul, C.~Gu, and A.~Roberts, ``Ddsp: Differentiable
-  digital signal processing,'' in {\em International Conference on Learning
-  Representations}, 2020.
+\bibitem[Engel et~al., 2020]{DDSP}
+Engel, J., Hantrakul, L.~H., Gu, C., and Roberts, A. (2020).
+\newblock Ddsp: Differentiable digital signal processing.
+\newblock In {\em International Conference on Learning Representations}.
 
-\bibitem{neuralsourcefilter}
-X.~Wang, S.~Takaki, and J.~Yamagishi, ``Neural source-filter-based waveform
-  model for statistical parametric speech synthesis,'' in {\em ICASSP 2019-2019
-  IEEE International Conference on Acoustics, Speech and Signal Processing
-  (ICASSP)}, pp.~5916--5920, IEEE, 2019.
+\bibitem[Wang et~al., 2019]{neuralsourcefilter}
+Wang, X., Takaki, S., and Yamagishi, J. (2019).
+\newblock Neural source-filter-based waveform model for statistical parametric
+  speech synthesis.
+\newblock In {\em ICASSP 2019-2019 IEEE International Conference on Acoustics,
+  Speech and Signal Processing (ICASSP)}, pages 5916--5920. IEEE.
+
+\bibitem[日本音響学会音響標準委員会, 1953]{日本テスト}
+日本音響学会音響標準委員会 (1953).
+\newblock 音響標準較正法について.
+\newblock {\em 日本音響学会誌}, 9(2):72--82.
+
+\bibitem[日本音響学会音響標準委員会, 2024]{テスト２}
+日本音響学会音響標準委員会 (2024).
+\newblock
+  特集：2024年度人工知能学会全国大会（第38回）[ポスターセッション総括，jsai2024企業参加推進担当活動報告，学生企画「マルチモダリティ革命—大規模事前学習済みモデルの新たな視点を探る—」，全国大会
+  2024女性向けランチ交流会］.
+\newblock {\em 人工知能}, 39(6):925--929.
 
 \end{thebibliography}
