@@ -1,0 +1,91 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２４年１１月１５日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item インフルエンザ予防接種を受けた（嬉）
+    \item 新しい食器棚を買ったので、部屋の整理もかなり変わった。
+    \item 年金免除の手続きを完了した（？）
+    \item 自分で開発したExternalを追加したPlugDataのバージョンがビルドできた。
+    これからはPDそのもののコードを変更していこうかと思う。
+    \item 最近は鳥の鳴き声を自動に楽譜にするプログラムを開発しようと思っている。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item コードを書き始めた。モデルのトレーニングとサンプルの出力に
+    分けられている仕組みになった。
+    \item モデルのトレーニングの方はまだ不明で、出力のためにVariational Autoencoder
+    の使い方についても読んでいた。チュートリアルの文献を見つけて、それを使用している。\cite{autoencoder_tutorial}
+    \item 知っている元・同級生、友達などと話し合ったり、収録できる方を探し始めた。
+\end{itemize}
+
+\section*{考えていること}
+
+カープラスストロングや物理モデルのシンセサイザーも訓練のデータベースに入れるかどうか
+少し悩んでいる。そのデジタル楽器は撥弦楽器と似た特性もあるものの、本物の弦ではないため、
+研究にどのようが影響になるか気になる。\\~\\
+現在収録できそうな楽器：
+\begin{itemize}
+    \item 三味線
+    \item マンドリン
+    \item アコギター（収録中）
+    \item エレキギター（収録完了）
+    \item エレキバス
+    \item チャランゴ
+    \item ウクレレ
+    \item バンドゥリア
+    \item クアト\\
+\end{itemize}
+
+現在収録したい楽器：
+\begin{itemize}
+    \item リラ
+    \item バラライカ
+    \item ハープ
+    \item 琴
+    \item リュート
+    \item テオルボ
+    \item バンジョー\\
+\end{itemize}
+
+収録するべきかどうか不明：
+\begin{itemize}
+    \item カープラスストロング・物理モデルシンセサイザー
+    \item サントゥール
+    \item チェンバロ
+    \item コントラバス（ジャズなど）
+    \item ピッツィカートのバイオリン等\\
+\end{itemize}
+もちろん、サンプルのライブラリーも使えるけれど、サンプルの数、またダイナミックの
+ステージ等かなり異なるため、サンプルライブラリーの楽器の影響が比較的に弱くなるのも
+気になる。
+
+\section*{やること}
+\begin{itemize}
+    \item 出力ができるように頑張る。
+    \item 収録続ける
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

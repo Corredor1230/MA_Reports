@@ -1,0 +1,60 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\graphicspath{{../media/}}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２４年１１月８日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 先週の週末は風邪をひいた
+    \item 演習の発表を完了（？）した
+    \item オープンソースプロジェクトに関わったり、Discordのサーバーに入ったりして、
+    CMakeはやっぱり難しい
+    \item PlugDataが認識できるテストオブジェクトを開発してみた
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item DDSPの勉強は問題なく進んでいる
+    \item 別の参考を探してみたら、\cite{ddspTutorial}
+    で進捗している。
+    \item DDSPのGithubにもTrainingのチュートリアルなどもあるので、
+    ここからは参考として使用して、自分のモデルのトレーニングができるだろうと
+    思っている。
+\end{itemize}
+
+\section*{考えていること}
+
+現在読んでいる文献のおかげで、次々のステップは大体理解できたと思うので、
+ここからはいくつかの開発実験を行って、トレーニングの結果によって、次の計画を
+建てると考えている。
+
+\includegraphics[scale=0.2]{ddspoverview}
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 容易なモデルをトレーニングしてみる
+    \item 来週の草加ハープフェスティバルに行く
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}
