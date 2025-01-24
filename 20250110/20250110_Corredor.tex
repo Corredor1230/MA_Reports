@@ -1,0 +1,61 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年０１月１０日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 年末はちゃんと休んで、自分の趣味に集中したり、
+    友達に会ったりしていました。
+    \item やはりクリスマス・年末時期に帰国しなくて
+    少し寂しかったですが、天気がずっと良かったですから
+    色々な場所に行ったり、散歩したりして楽しかったです。
+    \item ２０２５年度修士を始まり、頑張ります。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item ちゃんと休み、あまり研究に集中しないつもりでしたが、
+    結局信号の周期の自動編集プログラムが楽しくて、大体動く
+    プログラムが開発できました。
+    \item マンドリンの収録を始めましたが、まだまだかかりそうです。
+    \item 弦楽器の振動と物理的な特性の文献を読み始めました。\cite{String_vibration}
+\end{itemize}
+
+\section*{考えていること}
+
+１コースに２弦があるマンドリンの場合には弦１本１本を収録せず、
+コースを収録していますが、そうすると、コース１弦の楽器と
+全然違う波形になるので、分析の時は問題になるかもしれません。
+
+周期の認識は現在のプログラムでかなり良くなりましたが、
+ずれていく問題もあるため、まだ完璧ではない。しかし、
+このデータではADSRの情報やスペクトル成分の変わりも
+確かめるかと思うので、このプログラムは使えそうです。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 収録、研究、開発を続く
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

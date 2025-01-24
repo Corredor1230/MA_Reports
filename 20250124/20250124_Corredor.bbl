@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[Doersch, 2021]{autoencoder_tutorial}
+Doersch, C. (2021).
+\newblock Tutorial on variational autoencoders.
+
+\bibitem[Tatar et~al., 2021]{latent_space}
+Tatar, K., Bisig, D., and Pasquier, P. (2021).
+\newblock Latent timbre synthesis: Audio-based variational auto-encoders for
+  music composition and sound design applications.
+\newblock {\em Neural Computing and Applications}, 33:67--84.
+
+\end{thebibliography}

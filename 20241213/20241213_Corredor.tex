@@ -1,0 +1,57 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２４年１２月１３日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item ２年生のアートパスプロジェクトのデータ分析に集中していた。
+    \item 英語教室のバイトを始める。
+    \item 日光へ行って、雪が降っていた。
+    \item 次回の演習の文献を探して、拝読していた。\cite{roomGAN}
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item アコギターの収録を完了した。
+    \item マンドリンを買い、収録し始めた。
+\end{itemize}
+
+\section*{考えていること}
+
+これは信号解析において完全に型破りなアプローチかもしれませんが、単音が演奏されている音声ファイルを、
+音波の1周期ごとに分割したテーブルや音声ファイルに分ける方法があるのか気になっています。
+そのようにして、各周期で音波がどのように変化するかを比較し、
+例えば加算合成シンセサイザーを使ってその挙動を再現できるかもしれません。
+
+これは、DDSPが本来行っている処理のよりアナログ的なバージョンと言えますし、
+私の研究プロジェクトに直接的な影響を与えるものではないかもしれません。しかし、
+このプロジェクトの目的において興味深いアイデアだと感じるので、実現可能なのかどうか知りたいと思っています。
+このようなソフトウェアやアルゴリズムは既に存在するのでしょうか？周期的な単音源のピッチを認識し、
+その周期ごとに分割する能力を持つものです。
+
+\section*{やること}
+\begin{itemize}
+    \item ウクレレの収録をし始める。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}
