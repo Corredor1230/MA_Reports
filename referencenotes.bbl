@@ -1,9 +1,58 @@
 \begin{thebibliography}{}
 
+\bibitem[Caetano and Rodet, 2013]{Sound_Morphing}
+Caetano, M. and Rodet, X. (2013).
+\newblock Musical instrument sound morphing guided by perceptually motivated
+  features.
+\newblock {\em IEEE Transactions on Audio, Speech, and Language Processing},
+  21(8):1666--1675.
+
 \bibitem[Engel et~al., 2020]{DDSP}
 Engel, J., Hantrakul, L.~H., Gu, C., and Roberts, A. (2020).
 \newblock Ddsp: Differentiable digital signal processing.
 \newblock In {\em International Conference on Learning Representations}.
+
+\bibitem[Fitzgerald, 2010]{Harmonic_Percussive_Separation}
+Fitzgerald, D. (2010).
+\newblock Harmonic/percussive separation using median filtering.
+
+\bibitem[Le~Vaillant and Dutoit, 2024]{latentSpaceInterpolation}
+Le~Vaillant, G. and Dutoit, T. (2024).
+\newblock Latent space interpolation of synthesizer parameters using
+  timbre-regularized auto-encoders.
+\newblock {\em IEEE/ACM Transactions on Audio, Speech, and Language
+  Processing}, 32:3379--3392.
+
+\bibitem[Pati and Lerch, 2021a]{Attribute_Based_Regularization}
+Pati, A. and Lerch, A. (2021a).
+\newblock Attribute-based regularization of latent spaces for variational
+  auto-encoders.
+\newblock {\em Neural Computing and Applications}, 33:4429--4444.
+
+\bibitem[Pati and Lerch, 2021b]{Disentanglement}
+Pati, A. and Lerch, A. (2021b).
+\newblock Is disentanglement enough? on latent representations for controllable
+  music generation.
+
+\bibitem[Peeters et~al., 2011]{TimbreToolbox}
+Peeters, G., Giordano, B.~L., Susini, P., Misdariis, N., and McAdams, S.
+  (2011).
+\newblock The timbre toolbox: Extracting audio descriptors from musical
+  signals.
+\newblock {\em The Journal of the Acoustical Society of America},
+  130(5):2902--2916.
+
+\bibitem[Tatar et~al., 2021]{Latent_Timbre}
+Tatar, K., Bisig, D., and Pasquier, P. (2021).
+\newblock Latent timbre synthesis: Audio-based variational auto-encoders for
+  music composition and sound design applications.
+\newblock {\em Neural Computing and Applications}, 33:67--84.
+
+\bibitem[Vaillant and Dutoit, 2023]{SPINVAE1}
+Vaillant, G.~L. and Dutoit, T. (2023).
+\newblock Synthesizer preset interpolation using transformer auto-encoders.
+\newblock In {\em ICASSP 2023 - 2023 IEEE International Conference on
+  Acoustics, Speech and Signal Processing (ICASSP)}, pages 1--5.
 
 \bibitem[Wang et~al., 2019]{neuralsourcefilter}
 Wang, X., Takaki, S., and Yamagishi, J. (2019).
@@ -16,12 +65,5 @@ Wang, X., Takaki, S., and Yamagishi, J. (2019).
 日本音響学会音響標準委員会 (1953).
 \newblock 音響標準較正法について.
 \newblock {\em 日本音響学会誌}, 9(2):72--82.
-
-\bibitem[日本音響学会音響標準委員会, 2024]{テスト２}
-日本音響学会音響標準委員会 (2024).
-\newblock
-  特集：2024年度人工知能学会全国大会（第38回）[ポスターセッション総括，jsai2024企業参加推進担当活動報告，学生企画「マルチモダリティ革命—大規模事前学習済みモデルの新たな視点を探る—」，全国大会
-  2024女性向けランチ交流会］.
-\newblock {\em 人工知能}, 39(6):925--929.
 
 \end{thebibliography}

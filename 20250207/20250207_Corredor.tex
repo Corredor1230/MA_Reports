@@ -1,0 +1,57 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２４年}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item \cite{latentSpaceInterpolation}を拝読した。
+\end{itemize}
+
+\section*{考えていること}
+
+モデルのトレーニングの計画を建て、二つの楽器の分析をするモデルをテストしてみる。
+そのためにまずはVACを使用し、楽器のデータベースをLatent Space（特性要素のベクトル）にする。\cite{latent_space}
+
+二つの楽器のベクトルを補間し、DDSPでデコードし、出力を生成できるモデルが完成する。
+
+トレーニングされたモデルをC++で使用できるライブラリとしてエキスポートし、JUCEのプラグインに含む。
+モデルのエキスポートについて調べてみたら、ONNXというフォーマットが出てきて、TensorFlowやPyTorchのVAC
+が対応されているため、使用しようと思っている。
+
+今週、始めてのトレーニングが完成したかったのに、前処理が長くなって結局間に合わなかったが、
+Pythonのコードはほぼ出来ているため、もうそろそろモデルのテストを始まれそうです。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item モデルのテストとONNXのエキスポートをしてみます。
+    \item 国では楽器がまだ始まっていないので、とりあえずそれを待ち、一か月後ぐらい
+    ハープの演奏者にまた連絡します。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

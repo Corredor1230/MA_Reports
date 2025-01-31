@@ -1,0 +1,100 @@
+\section{Latent Space Interpolation}
+
+\cite{latentSpaceInterpolation} used as main reference for the research.
+
+\subsection{Important bullet points}
+
+\begin{itemize}
+    \item Interpolation between timbres for a synthesizer should be more nuanced than a simple crossfade.
+    \item This work was carried out with a Variational Auto-Encoder (VAE) dedicated to preset interpolation.
+    \item This is helpful as it establishes an initial framework for sound design and allows.
+    \item Presets are handled as sequences of parameters using \textit{multi-head attention networks}.
+    \item Includes an objective morphing evaluation method based on audio features.
+    \item Mentions harmonic-percussive source separation from the following article: \cite{Harmonic_Percussive_Separation}
+    \item Existing synthesizers and research either underperform under slightly unexpected inputs, or yield lower quality outputs, or cannot be used in real-life contexts using MIDI input.
+    \item This research focuses on smooth transitions for synthesis.
+    \item In this case synthesizers are treated as black-box de-facto systems, which are not differentiable.
+\end{itemize}
+
+\subsection{The proposed model}
+
+\subsubsection{Synthesizer and Dataset}
+
+Presets and synthesized audio:
+
+\begin{itemize}
+    \item 30k presets (80\% training, 10\% validation and 10\% for testing). 
+    \item Volume, transpose and filter were not altered.
+    \item Presets are rendered to 16kHz audio with a single note (MIDI 56) and velocity (75). 
+    \item 257-band mel-spectrograms are used during training.
+\end{itemize}
+
+Audio features:
+
+\begin{itemize}
+    \item Audio Commons Timbral Models (ACTM) and Timbre Toolbox \cite{TimbreToolbox} allow the extraction of 8 and 46 features respectively. Then reduced to 6 and 32 due to high'correlation between some of them.
+    \item "These audio features act as a proxy for the human perception of timbre." \cite[p. 4]{latentSpaceInterpolation} 
+    \item Name of the model introduced: SPINVAE-2.
+\end{itemize}
+
+The structure:
+
+\begin{itemize}
+    \item VAE with an extra mel-spectrogram decoder.
+\end{itemize}
+
+Attribute-based regularization: Timbre Loss
+
+\begin{itemize}
+    \item $L_DKL$ is not enough to guarantee that timbre characteristics are encoded.
+    \item "Latent coefficients have been shown not to easily relate to perception"
+    \item Models are not directly trained for interpolation. Rather they get interpolated latent spaces and must decode those into audio.
+    \item Two regularization methods: 
+    \item \begin{itemize}
+        \item \cite{Disentanglement} "minimizes the binary cross-entropy between S(a) and S(u), where S denotes the logistic sigmoid."
+        \item \cite{Attribute_Based_Regularization} "enforces monotonic relationships between timbre attributes and some latent dimensions."
+    \end{itemize} 
+\end{itemize}
+
+Training procedure:
+
+\begin{itemize}
+    \item A bi-modal (mel-spectrograms and presets) VAE has been pre-trained.
+    \item A CNN is added to the model and its oututs are re-shaped and summed to the u and sigma vectors.
+    \item SPINVAE-1 \cite{SPINVAE1}
+    \item First only CNN encoder and decoder are trained from a mel-spectrogram dataset from NSynth notes, 2.2k Surge synthesizer pathes and 24k Dexed presets.
+    \item The weights of embedding, encoder and decoder layers are used as initial weights for all models.
+    \item Fine-tuning is performed without CNN encoder.
+\end{itemize}
+
+\subsection{Objective analysis}
+
+While the evaluation of linear interpolation is relatively simple, it is more complex to evaluate the interpolation of audio.
+
+\cite{SPINVAE1} talks about smoothness as a measure for interpolation.
+
+According to \cite{Sound_Morphing}, "an interpolation is perceptually linear when timbre feature values change linearly". 
+
+Therefore \textit{both linearity and smoothness must be measured}.
+
+
+
+In this case 
+
+\subsection{Newly learned concepts from this document}
+
+\begin{itemize}
+    \item Multi-head attention networks:
+    \item Regularization term based on timbre attributes
+    \item Latent Timbre Synthesis (LTS) \cite{Latent_Timbre} 
+    \item Dexed
+    \item Zero-mean, unit-variance normalized using statistics of the training set
+    \item Attention masks, hidden tokens
+    \item Transformer-based VAEs
+    \item Linear projection
+    \item Discretized Logistic Mixture
+    \item Regularized dimensions vs latent dimensions
+\end{itemize}
+
+\subsection{How it relates to my research}
+
