@@ -1,0 +1,81 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年４月１８日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 大学の中国語の授業を聴講している。
+    \item 天気はかなり良くなってきたので、自転車で色々な所へ行ったりしている。
+    \item 東ローマ帝国の本をもうすぐ終わりそうだから、次何を読めばいいか考え中。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item 松浦知也さんの博士論文を読み始めた。\cite{Matsuura_Mimium}
+    \item エレキギターの録音を全てやり直し
+    \item アコギターの録音の前処理もやり直し
+\end{itemize}
+
+\section*{考えていること}
+
+音楽のインフラストラクチャ（ソフトウェアやハードウェア）の構築を通じて、「藝術」
+ーすなわち創造的な発表ーが生み出されるのか。そして、その発表が、長い歴史を持つ
+音楽の世界とどのような関係を築くことができるのかを考察していきたい。
+
+そのため、単なるシンセサイザーの開発・研究にとどまらず、その開発過程がデジタル楽器のアイデンティティや、
+演奏・作曲のプロセスの一部となり得ることについて考察したいと考えている。
+
+\begin{displayquote}
+    役に立つものを作るのでなく定量的に効果も測定できない、人工物の創出を通じて社会に問いを投げかける目的としたデザインの意義が提示されてきた。
+    \cite{Matsuura_Mimium}
+\end{displayquote}
+
+さらに、音楽のインフラストラクチャを単なる技術的な営みとしてではなく、藝術的な営みとして捉えることで、
+ミュージシャンは自身の表現を洗練させるためのスキルを身につけると同時に、他分野にも親しみやすい視点からアプローチできるようになる。
+たとえば、基本的な原理は同じであっても、ミュージシャンにとっては脳波のフィルタを開発するよりも、EQを開発する方がずっと取り組みやすい。
+
+最近の録音のやり直しで、やっとソフトウェアを開発できるようになったかと思うので、ここからの録音も同じようにする。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 松浦知也さんの博士を読み続く。本人といずれ話したいけど、もうちょっと自分の研究を備えたらするつもり。
+    \item すでに録音されているデータを拡張しようと思うので、軽くピッチの変更をしたり、畳み込み残響をつけたりしていくつもり。
+    \item 研究計画書を提出し、履修登録を完了する。
+\end{itemize}
+
+\section{Comments}
+
+\begin{itemize}
+    \item Variability and augmentation.
+    \item Overfit on a specific instrument.
+    \item Multi-microphone for larger instruments.
+    \item Creating datasets from multiple microphone recordings.
+    \item "Online data augmentation"
+    \item torch-audiomentations
+    \item 'pyroom acoustics'
+    \item What is the 'identity' of an instrument? Where does sound end and the interface begin?
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}
