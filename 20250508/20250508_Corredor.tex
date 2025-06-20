@@ -1,0 +1,57 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年５月０９日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 無事に引っ越しできました（すごく面倒だったけど）。
+    \item 無事に研究計画書を提出した。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item \cite{Latent_Timbre}を読み続いている。
+    \item 前回の計画は野心すぎると気づき、モデルとJUCEの組み合わせ段階は結構厄介なことになった。
+    \item 先週使用していたCMakeのマネージャーはLibtorchを上手く組み込めず、またマニュアルのCMakeに戻った（だんだん慣れてきているのが嬉しい）。
+    \item プラグインにLibtorchを組み込むには、動的ライブラリではなく静的ライブラリとして扱う必要があるため、Libtorchのソースコードを取得して、自分でビルドすることになったが、まだ成功したことがない。
+    \item NinjaのC++のコンパイラーを使う必要があるものの、VS17のコンパイラーがデフォルトで、色々な問題が発生している。
+    \item ビルドが成功したら、次はモデルのONNXを製作し、JUCEのCMakeListsファイルでLibtorchを組み込む。
+\end{itemize}
+
+\section*{考えていること}
+
+もうすぐモデルを組み込む感じがするので、ライブラリの管理さえ解決すれば大丈夫だと思う。
+
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item Libtorchを静的ライブラリとしてビルドする。
+    \item モデルをJUCEのプラグインに組み込む。
+    \item 生成される音を評価し、モデルを再トレーニングする。
+    \item これらすべてできる限りハ・ヤ・ク・する！
+\end{itemize}
+
+\section{}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

@@ -1,0 +1,52 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年５月１６日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 夏が来る。あつくて、恐い。１１月まで人間になれない。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item CMakeでやっとLibtorchをプログインに組み込むことができた（動的ライブラリとしてだけど）！
+    \item モデルからの出力を音にする方法を検討している。
+    \item \cite{FIRNet}という文献を見つけて、もしかしてちょうど探していることかと思っていた。
+\end{itemize}
+
+\section*{考えていること}
+
+撥弦楽器のサンプルの短時間フーリエ変換またはメルスペクトルグラム（等級）と位相情報、そして楽器の指数、弦の指数、ダイナミクスの指数から生成されるLatent Spaceをエンコードし、トレーニングデータとして使用する。モデルの基本的な動作はLatent Spaceから等級と位相情報を再現する。その出力をまた音にする段階は特に複雑なので、現在は方法検討中である。恐らくFFTW（Fastest Fourier Transform in the West）を動的ライブラリとして組み込み、モデルの出力から逆短時間フーリエ変換を行って、オーディオを生成できるかと思う。FFTWは軽く、速く、使用した経験もあるため、最も相応しい方法だと思う。
+
+しかし、FIRNet\cite{FIRNet}の方は精度が高く、使い方もよく記録されているため、ボコーダーに基づいている方法も検討している。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item iSTFTのコードを書く。
+    \item FIRNetの文献を読み終わる。
+\end{itemize}
+
+\section{}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

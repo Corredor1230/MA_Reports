@@ -20,7 +20,8 @@
 \section*{近況}
 % Write your recent findings here.
 \begin{itemize}
-    \item 
+    \item 履修登録完了！
+    \item 音響心理研究法や高臨場感は学部の時全くしなかったので、登録して嬉しい。
 \end{itemize} 
 
 \section*{やったこと}
@@ -28,9 +29,12 @@
     \item 楽器の「アイデンティティ」という言葉についての文献を検索してみたら、\cite{IdentityAugmenting}を見つけた。
     \item 始めてモデルのトレーニングが完了できた（エラーなし済んだ）
     \begin{itemize}
-        \item どれぐらい使用できるかはまだ不明
+        \item どれぐらい使用できるのかまだ不明
     \end{itemize}
     \item CMakeを避けることができいので、まだ練習が必要。
+    \begin{itemize}
+        \item ちょうど今年、Rustを使ってJUCEのプロジェクトのCMakeファイルを管理できるパッケージがリリースされて、かなり易しくなって来た。
+    \end{itemize}
     \item 先週のデータ拡張の文献は拝読中。
     \item 文献の日誌を書き始めた。
     \begin{itemize}
@@ -41,12 +45,21 @@
 
 \section*{考えていること}
 
+トレーニングされたモデルは上手く音が出せるなら、ここから色々な面白い実験をしようと思う。
+例えば、楽器だけではなく、弾いた板や弾いた縄等の音を録音して、データセットに入れたらどうなるかやはり確かめたい。
+
+今はメルスペクトルグラムとPytorchのNNを使っているものの、まだDDSPやオーディオに向いているライブラリーを使わないと判断していないため、今度の結果によって、別ので再度トレーニングする必要があるかもしれない。
+
 \section*{やること}
 % Outline future steps here.
 \begin{itemize}
     \item トレーニングされたモデル（.pt）とJUCEの総合を解決してみる。
-    \item 
+    \item 何か音が発生できれば、その特徴を確認したり、自分の客観的な印象を記録したりする。
+    \item Epochの数を増やしたり、サンプルの情報（長さ、サンプリング周波数など）を変更したりしてみたい。
+    \item マンドリンの前処理をし、データセットに入れる。
 \end{itemize}
+
+\section{}
 
 % Add your bibliography here.
 \bibliography{../ref}

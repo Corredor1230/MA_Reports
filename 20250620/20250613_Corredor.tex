@@ -1,0 +1,93 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年６月１３日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+\begin{itemize}
+    \item インターンシップの応募の準備をしている。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item 三浦先生に相談したら、周期と倍音のみを使う機械学習モデルに価値があると言われ、周期スプリットのプログラムを開発して、モデルで試みる予定である。
+    \item 機械学習のLossとその影響について調べた。\cite{2024survey}
+    \item まだ論文に書いている方法を全て使用していないものの、現在のモデルが失敗したら、参考として使用する。
+    \item 周波数が生成されない問題を解決しようとした。
+    \item まずはLossの方式を変更した。MSEの代わりにL1(MAE)の方式を用いてトレーニングした。
+    \item EPOCH(トレーニング回数)を増やしても、出力されたスペクトルグラムはまたADSRを守りながらノイズのように基本周波数が無く、撥弦楽器の波形とかなり異なった。
+    \item スペクトルグラムのピッチとノイズ(ピッチ・倍音でない周波数)をもっと効率的に識別するために、FiLM (Feature-Wise Linear Modulation)を用いて、200回後に出力のスペクトルグラム・波形が改良された。
+    \item 周波数に焦点を当てるトレーニング回数(EPOCH)、そしてADSRに集中するEPOCHと、最後に両方に焦点を当てるEPOCHの仕組みを試みたら、また出力の精度が高くなった。この方法はCurriculum Trainingと呼ばれ、周期スプリッターの方法を試すと、役に立つかと思う。
+\end{itemize}
+
+\section*{考えていること}
+
+モデルの動き方をどんどん理解できて来た感じがして、嬉しいです。
+
+やはり、まだCNNについていろいろな不明なところが多すぎ、１０年勉強しても、まだ理解できないものが残ると思いますが、せめてモデルの基礎的な動き方そして変数の影響も操ることができると思います。
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_pitch.png}
+  \caption{現在使用しているモデルの出力}
+  \label{fig:0606modelWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_spectro.png}
+  \caption{そのスペクトルグラム}
+  \label{fig:0606modelSpectro}
+\end{subfigure}
+\caption{モデル}
+\label{fig:0606Model}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+  \caption{トレーニングデータとして使用しているギターサンプル}
+  \label{fig:eGuitWave}
+\end{subfigure}%
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+  \caption{そのスペクトルグラム}
+  \label{fig:eGuitSpectro}
+\end{subfigure}
+\caption{エレキギター}
+\label{fig:elecGuit}
+\end{figure}
+
+
+\section*{やること}
+\begin{itemize}
+    \item ピッチと倍音の問題を完全に解決したら、次はスペクトルの補間に移動する予定である。
+    \item 周期スプリッターの開発にも少し集中する。
+\end{itemize}
+
+%Bibliography (duh)
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

@@ -1,0 +1,95 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年５月３０日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 将来の計画、自分の道などについて色々な事を考えている。
+    \item ８月頃に万博へ行く予定です。まだ予約していないけど・・・
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item 出力ができた！！！（まだ精度が低いし、上手く動いていないかもしれないけど）
+    \item Nicolasと一緒にコードを読んでみたら、改善できる所を見つけた。
+    \item VAEについて様々なことを学んでいる。\cite{SPINVAE1} 
+    
+    \cite{latentSpaceInterpolation}
+\end{itemize}
+
+\section*{考えていること}
+
+iSTFT（位相が含まれている）方法の出力を詳しく分析すると、音が撥弦楽器に近くても、波形は全くトレーニングデータと違って、恐らく生成の段階にエラーが発生している。それに従って、STFTのみでトレーニングし、生成の段階でGriffin Limを使用してみたら、出力がノイズに近いものの、波形がちゃんと撥弦楽器に似ているため、周波数のデータが失われているが、Griffin Limでもっと精度が高い出力が生成できるかと思う。
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/wavTraining1.png}
+  \caption{iSTFT(位相が含まれている)}
+  \label{fig:gen1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/wavTraining2.png}
+  \caption{Griffin Lim}
+  \label{fig:gen2}
+\end{subfigure}
+\caption{波形全体のイメージ}
+\label{fig:generalComp}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/train1Close.png}
+  \caption{iSTFT}
+  \label{fig:zoom1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../media/train2Close.png}
+  \caption{Griffin Lim}
+  \label{fig:zoom2}
+\end{subfigure}
+\caption{波形（20msのみ）}
+\label{fig:zoomComp}
+\end{figure}
+
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 周波数の問題をデバッグしてみる。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+% Increase parameters, increase number of convolutional layers
+% Penalize the model for high loss value
+% Non-negative matrix factorization
+% Maybe separate spectrogram into two different arrays one with frequencies and one with 
+% Linear Predictive Coding to split sound sources
+
+\end{document}
