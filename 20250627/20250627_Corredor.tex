@@ -1,0 +1,87 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年６月２７日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+\begin{itemize}
+    \item 先週、読み始めた「イスラームの歴史」についての本は、最初の８０ページ研究方法について述べて、まだ歴史そのもあまり触れていない。
+    \item 東京国際交流館経由、墨田川高等学校の国際交流祭りみたいなイベントに誘われて、自国についての発表（？）決定。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item ピッチのある出力ができました！
+    \item またDDSP（Differentiable Digital Signal Processing）\cite{DDSP_Traditional}に向けて、入力データの倍音を使ってモデルをトレーニングしてみたら、結果がかなり改善できた。
+    \item マンドリンの収録されているサンプルの前処理を実行し始め、新しいサンプルも収録中です。
+\end{itemize}
+
+\section*{考えていること}
+
+今週生成できた出力のピッチが明瞭に聞こえるが、一方アタックの方が悪化した。その結果は予想外ではないので、次はアタックとサステインを異なるモデルで生成してみる。現在用いているモデルでは、アタックがスペクトルの平均値、または最も音量が大きい周波数として生成されているため、撥弦楽器のアイデンティティが弱い。
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_pitch.png}
+%   \caption{現在使用しているモデルの出力}
+%   \label{fig:0606modelWave}
+% \end{subfigure}
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:0606modelSpectro}
+% \end{subfigure}
+% \caption{モデル}
+% \label{fig:0606Model}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+%   \caption{トレーニングデータとして使用しているギターサンプル}
+%   \label{fig:eGuitWave}
+% \end{subfigure}%
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:eGuitSpectro}
+% \end{subfigure}
+% \caption{エレキギター}
+% \label{fig:elecGuit}
+% \end{figure}
+
+
+\section*{やること}
+\begin{itemize}
+    \item トレーニング続きます。特にアタックとサステインのモデル。
+    \item 新しいモデルにGANなどの使用を検討する。
+\end{itemize}
+
+%Bibliography (duh)
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}
