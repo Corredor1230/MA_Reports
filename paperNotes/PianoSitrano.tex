@@ -1,0 +1,29 @@
+\section{Piano Generation Noise Sine Transient}
+
+\cite{sitranoPiano}
+
+\subsection{Important bullet points}
+
+\begin{itemize}
+    \item Using "Sine, Transient, Noise" decomposition to design a differentiable spectral modeling synthesizer.
+    \item Three sub-modules (independent trainable models) learn these components.
+    \begin{itemize}
+        \item Quasi-harmonic: Uses physics formulas to estimate quasi-harmonic parameters automatically.
+        \item Noise: Uses a time-varying filter
+        \item Transient: Deep convolutional network. 
+    \end{itemize}
+    \item More emulation of coupling between different notes with a convolutional-based network.
+    \item General difficulty in accurately modeling the attack phase of notes.
+\end{itemize}
+
+\subsubsection{Harmonic-Percussive (HP) separation}
+
+\subsection{Newly learned concepts from this document}
+
+\begin{itemize}
+    \item Differentiable Spectral Modeling
+    \item Longitudinal waves in string instruments
+    \item 
+\end{itemize}
+
+\subsection{How it relates to my research}

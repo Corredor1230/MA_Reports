@@ -1,0 +1,202 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{amsmath}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{一次アンビソニックス録音を用いたイマーシブオーディオ環境における音場再現 (東京芸術大学スタジオB)}
+\author{音楽音響創造 丸井研究室 M1 Corredor Restrepo Juan Pablo \\
+録音日付：２０２５年７月１４日、 測定室:スタジオB、 \\
+室温:23C、 気圧:997mbar}
+\date{提出日付：２０２５年８月１０日}
+
+\begin{document}
+
+\maketitle
+
+\section{目的}
+\begin{itemize}
+    \item ２０２５年７月１４日に行われたアンビソニックス録音の室内音響を再現する。
+    \item アンビソニックスデコーダーソフトウェア、Reaperのワークフロー、およびreascriptシステムに慣れる。
+    \item より安定したステレオイメージを提供するために、インテンシティ再現プラグインを改善する。
+\end{itemize} 
+
+\section{解析手法}
+
+\subsection{理論}
+
+本実験では、音場を再現するために、まずアンビソニックスマイクを用いて室内の特定の位置の音を捉え、次にソフトウェアデコーダーでその録音をバイノーラル3Dステレオオーディオに変換することにした。
+
+最初の録音は、各数字が読み上げられ、単一のスピーカーから出力される数字読み上げ音声を使用した。これは指向性のテストとして機能する。二番目の録音は、指向性は低いがより没入感のある音楽のサラウンドミックスを使用した。
+
+期待される結果は、インテンシティベースの手法が指向性の捉えには成功するが、没入感の捉えには失敗し、一方でアンビソニックスは指向性が低いものの、より没入感があると予想された。
+
+\subsubsection{アンビソニックスの理論}
+
+アンビソニックスマイクは、4つの異なるマイクで構成されており、それぞれの振動板ができるだけ物理的に近接して配置され、正四面体の形状をなしている。各マイクは、Aフォーマットのアンビソニックスオーディオファイルの一部として、単一のチャンネルで録音される。\cite{nachbar2011ambix}
+
+Aフォーマットのアンビソニックスは直接3Dサウンドとして再生することはできず、代わりにBフォーマットに変換する必要がある。Bフォーマットでは、チャンネルは次のように規定される。
+
+\begin{itemize}
+    \item W (無指向性): マイクの位置における全体の音圧を表す。
+    \item X (双指向性): 前後の音情報を捉える。
+    \item Y (双指向性): 左右の音情報を捉える。
+    \item Z (双指向性): 上下の音情報を捉える。
+\end{itemize}
+
+アンビソニックスフォーマットの主な利点は、特定のスピーカーセットや部屋に限定されないことである。どのような特定のスピーカーセットにも良好な結果でデコードすることができる。
+
+\subsubsection{SOFA and HRTF}
+
+今回は、Bフォーマットのアンビソニックスをヘッドフォンで聴くことができるバイノーラルオーディオファイルにデコードするために、HRTF（頭部伝達関数）を使用した。\cite{ling2023implementation} 
+
+HRTFは、人の耳の中に小型マイクを設置して行われる測定であり、各個人が周囲の世界をどのように聞いているかを捉えるために我々が開発した最も正確な方法である。
+
+BフォーマットのアンビソニックスとHRTFを畳み込み、そのオーディオをステレオファイルにデコードすることで、かなりの精度で音場を再現することができる。
+
+\subsubsection{インテンシティベースのアプローチ}
+
+HRTFやアンビソニックスの使用とは異なり、インテンシティベースの計算は、本質的に音のアクティブインテンシティ $\rho * v$（音圧 * 粒子速度）に基づいて指向性ベクトルを見つけ出す。
+
+これは、エネルギーの方向は保持されるが、チャンネル間の位相関係や特に仰角にとって重要なフィルタリングキューは保持されないことを意味する。この方法は、非常に指向性の高いエネルギーのバースト（数字読み上げ音声と同様）には非常に効果的だが、没入感のあるサウンド（音楽音声と同様）に必要なスペクトルおよび位相特性に欠けている。
+
+\subsection{使用機材}
+
+\subsubsection{録音}
+
+\begin{itemize}
+    \item Sennheiser Ambeoマイク: 4つのカプセルを持つ一次アンビソニックスマイク。カバーを外し、マイクの位置を確認してからカバーを元に戻し、マイクを垂直軸に正しく設置することが推奨される。
+    \item スタジオB (27.2チャンネルセットアップ): イマーシブオーディオ用の29スピーカーセットアップ。
+    \item 数字読み上げ音声: 約32秒の音声ファイルで、各数字が単一のスピーカーから出力される。29スピーカーセットアップにおける指向性のテストとして機能する。
+    \item 音楽音声: 約1分間の音楽のイマーシブオーディオミックス。
+\end{itemize}
+
+\subsubsection{録音条件}
+\begin{itemize}
+    \item サンプルレート: 48,000Hz
+    \item ビット深度: 24ビット
+    \item アンビソニックスフォーマット: 一次Aフォーマット
+\end{itemize}
+
+\subsubsection{ソフトウェア}
+\begin{itemize}
+    \item Reaper: 非常に強力なイマーシブ機能を持つDAW。ルーティング、ソフトウェア開発、トラックプリセットにおいて非常に柔軟性がある。インテンシティベースの手法に役立つソフトウェア内プログラミングが可能。
+    \item Sennheiser AMBEO: アンビソニックスA-Bコンバーター。Aフォーマットのアンビソニックス生オーディオを、分かりやすいBフォーマットのアンビソニックスに変換する。
+    \item IEM Energy Visualizer: 音のエネルギーが空間のどこに分布しているかを視覚化する強力なツール。
+    \item Sparta DirASS: 別の視覚化ツール。こちらはより焦点が絞られ、臨床的な表示で、残響に関わらず音源の特定の位置を見つけやすい。
+    \item IEM AIIRA Decoder: 一次アンビソニックスを、グラフィックインターフェースで描かれた任意の多角形空間を再現するためのマルチチャンネルセットアップにデコードするプラグイン。
+    \item Sparta Binauraliser: マルチチャンネル入力を受け取り、HRTFを使用してリスナーの物理的特性を再現し、バイノーラルステレオ出力にダウンミックスするプラグイン。
+\end{itemize}
+
+\subsection{JSFXコードの変更}
+
+JSFXインテンシティベースの手法で見つかった主な問題の一つは、指向性の不安定さでした。ほとんどの場合、音源は空間内で正しく定位できましたが、同じ音源が出力で頻繁に位置を変えることがあり、これは周波数ごとの伝播の違いや反射の影響を受けている可能性が高いです。そこで、指向性の急激な変化を減らすために、「KOK JSFX01 AmbiX to P Ixyz」にスムージングパラメータが追加されました。これは、急激で注意を散らす変化を防ぐ一方で、指向性をわずかに犠牲にすることを意味します。一般的に言って、50msのスムージングを適用した結果は、FOAよりも指向性が感じられ、急激な変化の多くを回避しています。\ref{fig:newCode}
+
+\begin{figure}
+    \centering
+    \includegraphics{media/changes_kuukan.png}
+    \caption{改良したインテンシティプラグイン}
+    \label{fig:newCode}
+\end{figure}
+
+このコードでは、スムージングがリーキーインテグレータ、つまり次のような更新則を持つ一次IIRローパスフィルターによって行われていることがわかります。
+
+\[y[n]=y[n-1]+\alpha\,\big(x[n]-y[n-1]\big)\]
+
+ここで、$\alpha$は次の式を用いて計算されます。
+
+\[\alpha=1-e^{-\frac{1}{(\text{smoothing\_ms}\cdot0.001)\cdot f_s}}\]
+
+\section{解析結果}
+
+結果を理解するために、各音声ファイルの各構成でのステレオ出力を確認します。出力されたステレオファイルは添付されており、AIIRAデコーダー用は「Foa」、初期のインテンシティ計算用は「Intensity」、スムージングされたインテンシティコード用は「SmoothedIntensity」とラベル付けされています。
+
+次に、デコードされた数字音声のステレオ定位図を見て、一次アンビソニックスデコーディング、インテンシティベースデコーディング、スムージングされたインテンシティベースデコーディングの結果を比較します。
+
+図\ref{fig:intensity}が示すように、インテンシティ法を使用すると、ステレオ定位図で左右の指向性が容易に見て取れます。これは、アンビソニックス出力のステレオ定位図\ref{fig:amb}と比較すると特に明らかで、そちらは左右に振動するパターンがはるかに不明瞭です。これは、アンビソニックスが単なるエネルギーだけでなく、フィルタリングやスペクトルの変化に依存していることにも一因がありますが、インテンシティベースの手法が指向性において特有の強みを持つことを示しています。
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/IntensityWave.png}
+  \caption{インテンシティからのステレオ波形}
+  \label{fig:intWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/IntensityStereo.png}
+  \caption{インテンシティからのステレオ図}
+  \label{fig:intSte}
+\end{subfigure}
+\caption{インテンシティ}
+\label{fig:intensity}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/FoaWave.png}
+  \caption{FOAからのステレオ波形}
+  \label{fig:ambWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/FoaStereo.png}
+  \caption{FOAからのステレオ図}
+  \label{fig:ambSte}
+\end{subfigure}
+\caption{FOA}
+\label{fig:amb}
+\end{figure}
+
+インテンシティベースの手法のステレオ定位図は、結果として得られる出力が非常に不安定であることも示しています。音声が音場の中心で始まり、突然左や右に移動する例がいくつかあります。これは特に、高周波成分で始まる単語（'s'や'k'の文字など）でよく見られます。
+
+この不安定さを軽減するために、スムージングアルゴリズム（図\ref{fig:newCode}）が実装されました。結果として得られたステレオ定位図（図\ref{fig:smoothed}）は、期待通り、各垂直レイヤーで中心から時計回りに明確に振動する、より安定したパンニングパターンを示しています。
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/SmoothedWave.png}
+  \caption{スムージングインテンシティからのステレオ波形}
+  \label{fig:smoWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/SmoothedStereo.png}
+  \caption{スムージングインテンシティからのステレオ図}
+  \label{fig:smoSte}
+\end{subfigure}
+\caption{スムージングインテンシティ}
+\label{fig:smoothed}
+\end{figure}
+
+このアルゴリズムの自然な結果として、指向性が失われる可能性がありますが、これはスムージングの値が高くなるほど顕著になります。しかし、これはより快適な聴取体験と引き換えに、許容できるトレードオフと見なされます。
+
+アルゴリズムの将来的な改善点としては、高周波数帯と低周波数帯で完全に別々の処理を行うことや、インテンシティウィンドウを用いて新しいトランジェントのおおよその位置を計算し、その音の最初のサンプルからその位置を事前に割り当てるルックアヘッド検出機能などが考えられます。もちろん、これらの開発パスをテストするためには、さらなる研究と実験が必要です。
+
+\section{考察}
+
+音場再現技術は、常にトレードオフとバランスの連続です。一方では、一次アンビソニックスは、音源の大まかな方向を示し、楽しい聴取体験を提供するのに十分安定して明瞭な再現を提供します。しかし、一次自体の解像度が低いため、入射角のわずかな違いを区別することは難しく、音源の垂直角を確実に知ることは、時には非常に困難であるか、不可能でさえあります。
+
+他方で、インテンシティベースの手法はより明確な指向性イメージを提供しますが、そのトレードオフは不安定さです。インテンシティ計算にスムージングが適用された瞬間、指向性は低下し、インテンシティベースの手法を使用する利点も減少します。
+
+事前に計算されたインテンシティプロットをアンビソニックスが参照し、その情報を用いて音源にさらなる指向性を与えるという、二方面からのアプローチを検討する価値があるかもしれません。しかし、より単純で、おそらくより効果的な代替案は、最初から高次のアンビソニックス録音を使用することです。高次アンビソニックスは、現場をはるかに成功裏に再現することが知られています。
+
+% Add your bibliography here.
+\bibliography{Corredor_Report}
+\bibliographystyle{apalike}
+
+\end{document}

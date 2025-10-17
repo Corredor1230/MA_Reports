@@ -1,0 +1,90 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年７月１１日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+\begin{itemize}
+    \item パソコンはまだ生きている！今はゾンビー形
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item 周期スプリッターのプログラムに集中した。
+    \item GUIやcsv製作の昨日も書いた。
+    \item これで角倍音のエンベロープを分析でき、位相の変わりも含まれ、モデルのトレーニングができるのだろう。
+\end{itemize}
+
+\section*{考えていること}
+
+\cite{sitranoPiano}によると、Sine, Noise, Transientに基づくモデルのトレーニングが楽器の生成のために使用できるため、この道で続く。
+
+周期から周波数や位相の情報を得るために、各周期をHanning窓を使って、ループして、そこからFFTで取れるかと思う。
+
+論文を読んでもまだ、音源の前処理は完全に理解できないため、それに集中しなければならない。
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_pitch.png}
+%   \caption{現在使用しているモデルの出力}
+%   \label{fig:0606modelWave}
+% \end{subfigure}
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/film_epoch320_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:0606modelSpectro}
+% \end{subfigure}
+% \caption{モデル}
+% \label{fig:0606Model}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+%   \caption{トレーニングデータとして使用しているギターサンプル}
+%   \label{fig:eGuitWave}
+% \end{subfigure}%
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:eGuitSpectro}
+% \end{subfigure}
+% \caption{エレキギター}
+% \label{fig:elecGuit}
+% \end{figure}
+
+
+\section*{やること}
+\begin{itemize}
+    \item 音源から必要な情報を取る方法を探します。
+    \item 間に合えば、中間発表で見せられるモデルをトレーニングします。
+\end{itemize}
+
+%Bibliography (duh)
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

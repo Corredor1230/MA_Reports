@@ -1,0 +1,201 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{amsmath}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{音場再現 using first-order ambisonics recordings in an immersive audio environment (東京芸術大学スタジオB)}
+\author{音楽音響創造 丸井研究室 M1 Corredor Restrepo Juan Pablo}
+\date{録音日付：２０２５年７月１４日、 測定室:スタジオB、 室温:23C、 気圧:997mbar}
+\date{提出日付：２０２５年８月１０日}
+
+\begin{document}
+
+\maketitle
+
+\section{目的}
+\begin{itemize}
+    \item Recreate the room acoustics of the ambisonics recording performed on July 14th, 2025.
+    \item Get familiarized with ambisonics decoder software, Reaper workflows and the reascript system.
+    \item Improve インテンシティ recreation plug-ins to provide a more stable stereo image.
+\end{itemize} 
+
+\section*{解析手法}
+
+\subsection{理論}
+
+For this experiment, in order to recreate an 音場 we first decided to capture sound at a specific point in space within a room using an ambisonics microphone, and then software decoders to convert that recording back to binaural 3D stereo audio.
+
+The first recording used was a number-counting audio, where each number is read out loud and comes out of a single speaker. This serves as a test for directionality. The second recording used was a surround mix of music, which is less directional but more immersive.
+
+The expected result was that the intensity-based method would succeed at capturing directionality, but fail at capturing immersion, whereas ambisonics is expected to feel less directional but more immersive.
+
+\subsubsection{アンビソニックスの理論}
+
+The ambisonics microphone consists of four different member microphones with their diaphragms placed as physically close to each other as possible, forming the shape of a tetrahedron. Each microphone is recorded as a single channel, part of the A-Format ambisonics audio file. \cite{nachbar2011ambix}
+
+A-Format ambisonics cannot be played as 3D sound directly; instead they need to be converted to the B-Format, where the channels are specified in the following manner
+
+\begin{itemize}
+    \item W (omni-directional): Represents overall sound pressure at the microphone's position.
+    \item X (bidirectional): captures front-to-back sound information.
+    \item Y (bidirectional): captures left-to-right sound information.
+    \item Z (bidirectional): captures up-to-down sound information.
+\end{itemize}
+
+The main advantage of ambisonics formats is that they are not limited to any specific set of speakers or rooms. They can be decoded into any specific set of speakers with good results.
+
+\subsubsection{SOFA and HRTF}
+
+In this case we used HRTFs (Head-Related Transfer Functions) to decode the B-Format ambisonics into a binaural audio file which could be listened to using headphones. \cite{ling2023implementation} 
+
+HRTFs are measurements taken from within a person's ears using small microphones, and they are the most accurate way we have developed of capturing how each person hears the world around them.
+
+By convolving HRTFs with the B-Format ambisonics, and then decoding those audios into a stereo file, we are capable of recreating the 音場 with considerable accuracy. 
+
+\subsubsection{Intensity-based approach}
+
+Unlike the use of HRTFs and Ambisonics, the intensity-based calculations essentially find a directionality vector based on the active intensity of sound $\rho * v$ (pressure * particle-velocity). 
+
+What this means is that the direction of energy will be preserved, but phase relationships between channels and filtering cues which are particularly important for elevation, will not. This method is very effective for very directional bursts of energy (similar to the number-counting audio), but it lacks the spectral and phase characteristics needed for immersive sound (similar to the music audio).
+
+\subsection{使用機材}
+
+\subsubsection{録音}
+
+\begin{itemize}
+    \item Sennheiser Ambeo microphone: A first-order ambisonics microphone with four capsules. It is recommended to remove the cover, check where the microphones are positioned, and then set the cover back up in order to place the microphone correctly on the vertical axis.
+    \item Studio B (27.2 channel setup): 29-speaker setup for immersive audio.
+    \item Number-counting audio: Approximately 32 second-audio file containing numbers that are output from a single speaker each. Serves as a test for directionality in the 29-speaker setup.
+    \item Music audio: Immersive audio mix of approximately 1 minute of music. 
+\end{itemize}
+
+\subsubsection{録音条件}
+\begin{itemize}
+    \item Sample rate: 48,000Hz
+    \item Bit depth: 24-bits
+    \item Ambisonics format: First-order A-format
+\end{itemize}
+
+\subsubsection{ソフトウェア}
+\begin{itemize}
+    \item Reaper: DAW with very powerful immersive capabilities. It is very flexible in its routing, software development and track presets. It allows for in-software programming which will be useful for the intensity-based methods.
+    \item Sennheiser AMBEO: Ambisonics A-B converter. This turns the A-Format ambisonics raw audio into easily understood B-Format ambisonics.
+    \item IEM Energy Visualizer: Powerful tool to visualize where sound energy is distributed in space.
+    \item Sparta DirASS: Another visualizer tool. This one has more focused and clinical displays, easier to find the specific location of the sound source regardless of reverberation.
+    \item IEM AIIRA Decoder: Plug-in that decodes first-order ambisonics into multi-channel setups meant to recreate any polygonal space drawn with its graphic interface.
+    \item Sparta Binauraliser: Plug-in that takes a multi-channel input and downmixes it to a binaural stereo output using HRTFs to recreate the listener's physical particularities.
+\end{itemize}
+
+\subsection{Changes to the JSFX code}
+
+One of the major issues found with the JSFX intensity-based method was the instability in directivity. Although for the most part sound sources could be located in space correctly, very frequently the same sound source would change positions in the output, most likely influenced by differences in propagation for different frequencies as well as reflections. Therefore, in order to reduce the abrupt changes in directivity, a smoothing parameter was added to the "KOK JSFX01 AmbiX to P Ixyz". This meant a slight sacrifice in the directivity while preventing abrupt and distracting changes. Generally speaking, the result feels more directive than FOA, while avoiding many of the abrupt changes, with a smoothing of 50ms applied. \ref{fig:newCode}
+
+\begin{figure}
+    \centering
+    \includegraphics{media/changes_kuukan.png}
+    \caption{改良したインテンシティプラグイン}
+    \label{fig:newCode}
+\end{figure}
+
+In this code we can see that the smoothing is being done by a leaky integrator, essentially a first-order IIR low-pass filter with the following update rule:
+
+\[y[n]=y[n-1]+\alpha\,\big(x[n]-y[n-1]\big)\]
+
+where $\alpha$ is calculated using the following formula:
+
+\[\alpha=1-e^{-\frac{1}{(\text{smoothing\_ms}\cdot0.001)\cdot f_s}}\]
+
+\section{解析結果}
+
+In order to understand the results, we are going to look at the stereo output for each audio file with each different configuration. The output stereo files are annexed and labeled as 'Foa' for the AIIRA decoder, 'Intensity' for the initial intensity calculations and 'SmoothedIntensity' for the smoothed intensity code.
+
+Next we are going to look at the stereo plan of the decoded numbers audio and compare the results of first-order ambisonics decoding, intensity-based decoding, and smoothed intensity-based decoding.
+
+As evidenced by figure \ref{fig:intensity}, using the intensity method, it's easy to see the left-right directionality in the stereo plan. This is especially evident when compared to the stereo plan of the ambisonics output \ref{fig:amb}, which features a much less clear oscillating pattern from left-to-right. This is also in part due to ambisonics' reliance on filtering and spectral changes beyond just energy, however, it does point to a particular strength in directionality when it comes to intensity-based methods.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/IntensityWave.png}
+  \caption{インテンシティからのステレオ波形}
+  \label{fig:intWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/IntensityStereo.png}
+  \caption{インテンシティからのステレオ図}
+  \label{fig:intSte}
+\end{subfigure}
+\caption{インテンシティ}
+\label{fig:intensity}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/FoaWave.png}
+  \caption{FOAからのステレオ波形}
+  \label{fig:ambWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/FoaStereo.png}
+  \caption{FOAからのステレオ図}
+  \label{fig:ambSte}
+\end{subfigure}
+\caption{インテンシティ}
+\label{fig:amb}
+\end{figure}
+
+The stereo plan of intensity-based methods also demonstrates the very unstable nature of the resulting output. There are several instances where audios begin in the center of the 音場 before abruptly moving to the left or to the right. This is especially common with words that begin with high-frequency content (such as the letter 's' or the letter 'k').
+
+In order to mitigate this instability, a smoothing algorithm \ref{fig:newCode} was implemented. The resulting stereo plan \ref{fig:smoothed} demonstrates a more stable panning pattern that is still clearly oscillating clockwise from the center for every vertical layer, just as expected.
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/SmoothedWave.png}
+  \caption{Smoothed Intensityからのステレオ波形}
+  \label{fig:smoWave}
+\end{subfigure}
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{media/kuukan/SmoothedStereo.png}
+  \caption{Smoothed Intensityからのステレオ図}
+  \label{fig:smoSte}
+\end{subfigure}
+\caption{Smoothed Intensity}
+\label{fig:smoothed}
+\end{figure}
+
+A possible loss of directionality is a natural consequence of this algorithm, which will be more evident with higher smoothing values. However, this is considered an acceptable tradeoff in exchange for a more comfortable listening experience.
+
+Future enhancements to the algorithm may include completely separate processing for higher and lower frequency bands, and perhaps a lookahead detection function that would calculate the general location of a new transient by using intensity windows and preemtively assign said location to the sound from its very first sample. Though of course, more research and experimentation is required in order to test these development paths.
+
+\section{考察}
+
+音場 recreation techniques are a constant exercise of tradeoffs and balance. On the one hand, first-order ambisonics provides a stable and clear enough recreation to point out the general direction of sound sources, and provide an enjoyable listening experience. However, due to the low resolution of the first-order itself, it is difficult to differentiate slight differences in angles of incidence, and it is sometimes very difficult if not impossible to know for sure the vertical angle of the sound sources.
+
+On the other hand, intensity-based methods provide a clearer directional image, but their tradeoff is instability. The moment smoothing is applied to the intensity calculations, directivity decreases, also reducing the advantages of using intensity-based methods. 
+
+It might be worth considering to use a two-pronged approach, where ambisonics informs itself with a precalculated intensity plot, and uses that information to further provide a sense of directivity to sound sources. Although the simpler and probably more effective alternative, is to simply use higher order ambisonics recordings in the first place, which are known to recreate 現場 much more successfully.
+
+% Add your bibliography here.
+\bibliography{Corredor_Report}
+\bibliographystyle{apalike}
+
+\end{document}

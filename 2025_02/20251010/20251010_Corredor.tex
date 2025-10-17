@@ -1,0 +1,113 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１０月１０日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 散歩しています！！
+    \item みかんも安く変える為、みかん毎日食べています！
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item FFTウィンドウの作成方法をテスト・比較するために、分析プログラムの構造を改善することが必要。
+    \item 分析段階を個別のオブジェクトに分け、パラメーターオブジェクト等も作成した。
+    \item 各倍音の周波数変更に焦点を絞り、先週述べられた問題の原因を確認。
+    \item 周期に基づいている分析方法の欠点：
+    \begin{itemize}
+        \item 周期認識方法は無欠でない。
+        \item Jitterやノイズの発生。
+    \end{itemize}
+    \item ゼロパッドについて：
+    \begin{itemize}
+        \item スペクトル補間\cite{spectralInterpolation}の一種。
+        \item マグニチュードに基づいているスペクトル補間を追加すればより精度が高い分析が得られる。
+    \end{itemize}
+\end{itemize}
+
+\[
+\delta = \frac{1}{2} \cdot
+\frac{\log(A_{-1}) - \log(A_{+1})}
+{\log(A_{-1}) - 2\log(A_0) + \log(A_{+1})}
+\]
+
+\[
+f_{\text{est}} = \left(k_{\text{max}} + \delta\right) \cdot \frac{f_s}{N}
+\]
+
+\section*{考えていること}
+
+周波数の変更を効率的に記録するためには、中心周波数周辺の帯域幅を一定にする必要がある。現在は、100セントである。
+
+FFTでは低音域の精度が低く、ピッチや音色を代表する周波数変更を十分に再現できない可能性がある。そのため、CQTの使用を検討中である。
+
+
+
+% \begin{figure}
+% \centering
+% \includegraphics[width = 0.9\linewidth]{../../media/2025_02/EGuit_Harmonics_82Hz.png}
+% \caption{８２Hzのエレキギターの倍音エンベロープ}
+% \label{fig:eGuitHarmonics}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics[width = 0.9\linewidth]{../../media/2025_02/AGuit_Harmonics_146.png}
+% \caption{１４６Hzのアコギターの倍音エンベロープ}
+% \label{fig:aGuitHarmonics}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+%   \caption{トレーニングデータとして使用しているギターサンプル}
+%   \label{fig:eGuitWave}
+% \end{subfigure}%
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:eGuitSpectro}
+% \end{subfigure}
+% \caption{エレキギター}
+% \label{fig:elecGuit}
+% \end{figure}
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item スペクトル補間。
+    \item 倍音のエンベロープを従い、色々な音を生成してみる。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}

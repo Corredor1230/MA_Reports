@@ -1,0 +1,94 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  
+
+\title{機械学習により、撥弦楽器の中間音を創り出す\\シンセサイザーの開発}
+\author{丸井研究室・M1・Juan Pablo Corredor\\東京芸術大学音楽研究科}
+\date{２０２５年０７月１８日}
+
+\begin{document}
+
+\maketitle
+
+\section{研究の目的}
+\begin{itemize}
+  \item 撥弦楽器（ギター、琵琶、マンドリンなど）の音色を補間し、新たな音を創出するシンセサイザーを機械学習により開発。
+  \item 音色補間の概念を探求。
+  \item 機械学習の分野においての自主録音データベースの可能性を検証。
+  \item ミュージシャンのための音楽的知見に基づいたツールの創造。
+\end{itemize}
+
+\section{背景と意義}
+\begin{itemize}
+  \item 現代の音楽制作において、新しい音の創出は重要な表現手段。
+  \item 機械学習と統計分析を活用することで、従来にはない音色空間を設計可能。
+  \item 音色の補間は、実験音楽や電子音楽において有用なアプローチ。
+\end{itemize}
+
+\section{方法論}
+
+\subsection*{研究方法}
+\begin{itemize}
+  \item 信号処理\cite{DDSP}、VAE\cite{SPINVAE1}や畳み込みニューラルネットワーク\cite{CNNs}など最適な機械学習手法を検討。
+  \item 類似研究および既存ソフトウェアのベストプラクティスを調査。
+\end{itemize}
+
+\subsection*{開発方法}
+\begin{itemize}
+  \item 開発環境の構築と動作検証。
+  \item 各種モデルの性能評価と改良。
+  \item 音楽演奏のようなリアルタイム環境での検証。
+  \item ハードウェア拡張の可能性も検討。
+\end{itemize}
+
+\section{音色生成プロセス}
+
+\begin{enumerate}
+  \item データの準備（録音・前処理）\cite{DDSP_Piano}
+  \item 無音カット、ダウンサンプリング、フィルター処理
+  \item データの単純化（名称、弦番号、ダイナミクス抽出）
+  \item ノイズ、信号、トランジェント\cite{sitrano}の抽出
+  \item モデルへの入力と学習
+  \item 出力の再構築と誤差調整
+  \item 学習の繰り返し
+  \item 音声データへの変換
+\end{enumerate}
+
+\section{システムの使用例}
+\begin{itemize}
+  \item 補間係数を選択
+  \item MIDIキーボードでノートを演奏
+  \item モデルが音色と周波数に応じたデータを生成
+  \item 行列を音声に変換して出力
+\end{itemize}
+
+\section{結果例と検証}
+
+\begin{itemize}
+  \item アコースティックギターとエレキギターの音を学習データとして使用。
+  \item モデルの各段階（初期、後期）での出力例を比較。
+  \item 音声およびスペクトログラムの違いを可視化。
+  \item 今後の改善点：ノイズ、トランジェント、サイン波の分析方法。
+\end{itemize}
+
+\section{今後の展望}
+\begin{itemize}
+  \item より多様な楽器の追加とデータ収集。
+  \item 補間アルゴリズムの改良による音色表現の向上。
+  \item ライブパフォーマンス向けのリアルタイム応答の強化。
+  \item ハードウェア連携による拡張性の模索。
+\end{itemize}
+
+\bibliography{../ref}
+\bibliographystyle{apalike}
+
+\end{document}

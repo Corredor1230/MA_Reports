@@ -1,0 +1,97 @@
+\documentclass[a4paper, 12pt]{article}
+%\usepackage[utf8]{inputenc}  % Ensures proper encoding for non-Japanese text
+\usepackage{xeCJK}           % Allows Japanese characters
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\setCJKmainfont{MS Mincho}  % You can change this to a different Japanese font if needed
+
+\title{進捗報告}
+\author{コレドール・パブロ}
+\date{２０２５年１０月３日}
+
+\begin{document}
+
+\maketitle
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item Hollow Knight: Silksongが出てきて、圧倒的に楽しい。
+    \item イタリア語の集中講義を受けました。面白かったです。
+    \item 今週、都立小川高等学校の国際交流イベントでプレゼンしました。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item 楽音信号の倍音の分析から出力ができ、ピッチも問題なくコントロールできる！音色も大体ギターに近くなった！\cite{sitrano}
+    \item コードをきれいに書き直し、用途が広い分析プログラムにした。
+\end{itemize}
+
+\section*{考えていること}
+
+トランジェントの分析・生成方法を検討している。ノイズの分析にはいくつかの方法を見つけたものの、トランジェントは非常に重要なので、十分な時間を使用し、相応しい方法を見つける。
+
+現在使っている倍音エンベロープの分析方法：
+
+\begin{itemize}
+    \item 信号のトランジェントの初サンプルを探し、1つのFFT窓後の振幅のピークを見つける。
+    \item ピークのすぐ前のゼロクロスを見つける。
+    \item 相互相関分析・ピッチにより、各周期の初サンプルを見つけ、ベクトルに登録する。
+    \item 信号のエネルギーが安定になったサステインからのやや長いFFTを行って、最も重要な32個の周波数を見つけ、登録する。
+    \item FFTウィンドウを埋めるために2周期のフレームを繰り返す。
+    \item FFTウィンドウにHanning窓の処理を実施する。
+    \item 重要な32個の周波数の大きさを登録する。1e-6の以下のビンは無視。
+    \item 各ビンのエンベロープをフィルターし、csvファイルとしてエキスポートする。
+\end{itemize}
+
+倍音のエンベロープの分析方法についてのテストは今まで行っていないけれど、Hanning無し、周期のゼロクロスを使わず（普通のFFT）の分析などのテストが必要。
+
+\begin{figure}
+\centering
+\includegraphics[width = 0.9\linewidth]{../../media/2025_02/EGuit_Harmonics_82Hz.png}
+\caption{８２Hzのエレキギターの倍音エンベロープ}
+\label{fig:eGuitHarmonics}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width = 0.9\linewidth]{../../media/2025_02/AGuit_Harmonics_146.png}
+\caption{１４６Hzのアコギターの倍音エンベロープ}
+\label{fig:aGuitHarmonics}
+\end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+%   \caption{トレーニングデータとして使用しているギターサンプル}
+%   \label{fig:eGuitWave}
+% \end{subfigure}%
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:eGuitSpectro}
+% \end{subfigure}
+% \caption{エレキギター}
+% \label{fig:elecGuit}
+% \end{figure}
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item ノイズ（単音・倍音でない成分）の分析方法を検討し、出力を生成してみる。
+    \item 倍音のエンベロープを従い、色々な音を生成してみる。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}
