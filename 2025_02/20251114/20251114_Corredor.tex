@@ -1,0 +1,73 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１１月１４日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item アニメ科コラボのBGMを完成した。ミックスセッションに参加した。
+    \item 接種、プレゼン等は無事にした。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize} 
+    \item 分析方法をテスト中、そのため、GUI、アプリ、Batch分析の機能を開発した。 
+    \item サイン分析の結果が大分改良。 
+    \item ノイズ分析はなかなか進まない。FFT、周波数帯域、エネルギーの数学の難易度が高く、使用している式を確認した上でも、エネルギーの値が正しく分析できない。\cite{sitrano}での分析方法はSTFT-ISTFTすなわち、スペクトルグラムから音源に戻すアルゴリズムを使用。
+\end{itemize}
+
+\section*{考察}
+
+出力していたCSVファイルのサイズは大きくて、データ扱いは非効率的な作用になるため、分析結果はバイナリーファイルに書き込んでいる（独自な拡張子で）。
+
+FFTウィンドウ（一周期、周期ループ、直接音源）の比較・評価方法を探している。
+
+また、機械学習モデルの出力を線形補間と比較する予定であるため、バイナリー倍音データを補間し、音源を生成するプログラムも開発中。
+
+聴覚実験が必要になる可能性もあると考えている。
+
+現在研究計画：
+
+倍音データの線形補間。
+
+機械学習モデルの開発を進んで、完了したら、補間。
+
+補間に基づき生成される音源の比較・評価。
+
+プラグインを開発し、最も精度が高いアルゴリズムを総合。
+
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 開発を続ける。
+    \item ノイズの分析を解決するように頑張る。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}
