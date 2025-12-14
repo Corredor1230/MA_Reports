@@ -1,0 +1,143 @@
+%!TEX recipe = xelatex
+\documentclass[a1,portrait]{a0poster}
+
+% ----------------------------------------------------------
+% Packages
+% ----------------------------------------------------------
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{xeCJK}
+\usepackage{hyperref} % Added for clickable email/links
+
+\setCJKmainfont{MS Mincho} % Or MS Mincho if on Windows
+
+% Page geometry
+\geometry{
+  left=15mm,
+  right=15mm,
+  top=0mm, % Top is 0 because our header handles the top margin
+  bottom=25mm
+}
+
+% ----------------------------------------------------------
+% ROBUST HEADER DEFINITION
+% ----------------------------------------------------------
+\newcommand{\TitleBlock}{
+\begin{tikzpicture}[remember picture,overlay]
+    \node[
+        anchor=north, 
+        fill=teal!70!white, 
+        minimum width=\paperwidth, 
+        minimum height=8cm, % Fixed height for the blue bar
+        inner ysep=1cm,     % Padding inside the blue bar
+        text=white
+    ] at (current page.north) {
+        % We use a minipage to hold the content centered
+        \begin{minipage}{0.95\paperwidth}
+            \centering
+            
+            % 1. The Title
+            {\fontsize{60}{72}\selectfont\bfseries Pre-Processing of Plucked String Instrument Data for Machine Learning}\\[0.5cm]
+            
+            % 2. Name and Affiliation
+            {\Huge Juan Pablo Corredor \quad $\cdot$ \quad 東京藝術大学}\\[0.3cm]
+            
+            % 3. Contact Information (Email / Web)
+            {\Large \texttt{juan.corredor@geidai.ac.jp} \quad $\cdot$ \quad \texttt{github.com/juancorredor}}\\[0.8cm]
+
+            % 4. Logos (Centered)
+            % Ensure these image paths are correct or use example-image
+            \includegraphics[height=2cm]{example-image} 
+            \hspace{2cm} 
+            \includegraphics[height=2cm]{example-image}
+        \end{minipage}
+    };
+\end{tikzpicture}
+}
+
+% ----------------------------------------------------------
+% Section style
+% ----------------------------------------------------------
+\tcbset{
+  sectionbox/.style={
+    colback=white,
+    colframe=blue!50!white,
+    boxrule=0.8pt,
+    sharp corners,
+    enhanced,
+    left=6pt,right=6pt,top=6pt,bottom=6pt, % Slightly more padding
+    fonttitle=\bfseries\Large,
+    title={#1}
+  }
+}
+
+\titleformat{\section}{\vspace{0.3cm}}{}{0pt}{}
+
+% ----------------------------------------------------------
+% Begin Document
+% ----------------------------------------------------------
+\begin{document}
+\pagestyle{empty}
+
+% 1. Render the Header
+\TitleBlock
+
+% 2. CRITICAL: Push the main content down
+% Since the header is an "overlay" (to cover the edges), we must
+% manually push the text down so it doesn't print ON TOP of the header.
+% Adjust this value (9cm) if you make the header taller/shorter.
+\vspace*{9cm} 
+
+% 3. Start Content
+\begin{multicols}{2}
+
+\begin{tcolorbox}[sectionbox={Background}]
+Your background text goes here.
+\lipsum[1]
+\end{tcolorbox}
+
+\begin{tcolorbox}[sectionbox={Objectives}]
+Write your research goals here.
+\lipsum[2]
+\end{tcolorbox}
+
+\begin{tcolorbox}[sectionbox={Methodology}]
+Your methodology description goes here.
+\begin{center}
+    % Using [width=\linewidth] makes it fit the column perfectly
+    \includegraphics[width=\linewidth]{example-image}
+\end{center}
+\lipsum[3]
+\end{tcolorbox}
+
+\begin{tcolorbox}[sectionbox={Results}]
+\begin{center}
+    \includegraphics[width=\linewidth]{example-image}
+\end{center}
+\lipsum[4]
+\end{tcolorbox}
+
+\begin{tcolorbox}[sectionbox={Conclusion}]
+\lipsum[5]
+\end{tcolorbox}
+
+% ----------------------------------------------------------
+% References
+% ----------------------------------------------------------
+\vspace{0.5cm}
+\noindent\textbf{References}\\
+\footnotesize
+\begin{itemize}
+    \item Author A. *Title of paper*, Journal, Year.
+    \item Author B. *Another reference*.
+\end{itemize}
+
+\end{multicols}
+
+\end{document}
