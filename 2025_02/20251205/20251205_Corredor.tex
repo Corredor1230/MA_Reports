@@ -1,0 +1,90 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}   % Required for images
+\usepackage{subcaption}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{../../ref.bib}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１２月０５日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 無事にAESへ行ってきました（日帰りはきついけど旅行の楽しさもある）！
+    \item 今日まで涼しくて気持ちよかったのに、今はもう寒い。また来年の秋を楽しみにしている。
+    \item Rust言語を始めた。信号処理などに便利。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize} 
+    \item トランジェント認識・識別のアルゴリズムを完成。
+\end{itemize}
+
+\section*{考察}
+
+Spectral Fluxはやはりトランジェントの初サンプルを見つけるには効果的であるが、トランジェントの終わりを識別するには弱いため、周期認識アルゴリズムの相互相関関数分析で認識できた。
+
+そのために、相互相関のウィンドウ、また音源の波形もゼロ位相フィルタで前処理し、相互相関関数の精度を増やす。
+
+次はトランジェントの分析方法、低次元表現の生成方法等を算段。現在、ウェーブレット変換（CWT）でスケ―ログラム（ウェーブレット変換のスペクトルグラム）を使用し、トランジェントの代表的な特徴が得られる。
+
+\section*{やること}
+% Outline future steps here.    
+\begin{itemize}
+    \item ウェーブレット変換とそのスケ―ログラムを開発。
+    \item 上手くいけば、モデル開発に入る。
+\end{itemize}
+
+\begin{figure}
+\centering
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../media/output_images/transient82.png}
+  \caption{82Hzのエレキギターのトランジェント}
+  \label{fig:eGuitWave}
+\end{subfigure}%
+\vspace{5mm}
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../media/output_images/transient82incontext.png}
+  \caption{その文脈}
+  \label{fig:eGuitSpectro}
+\end{subfigure}
+\caption{エレキギター}
+\label{fig:elecGuit}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{../../media/output_images/transient1046inContext.png}
+    \caption{1046Hzのアコギターのトランジェント}
+    \label{fig:aGuitWave}
+\end{figure}
+
+%開放弦
+
+% Add your bibliography here.
+\printbibliography
+
+\end{document}
