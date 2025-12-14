@@ -1,0 +1,59 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１０月３１日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item アニメ科コラボの制作評価セッションが行われた。
+    \item 冬のインターンシップ、授業等、忙しい。
+    \item 主にいくつかの会社の研究開発チームを狙っていたものの、最近は開発チームも検討。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize} 
+    \item ノイズ認識のコードを開発中である。 
+    \item 準調波分析モデルは、周波数応答の追従性が不十分であったため、現在改良中である。 
+\end{itemize}
+
+\section*{考察}
+
+位相に影響を与える可能性のあるフィルターに依存せず、生成された準調波信号を原音響信号から減算することにより、ノイズ成分のみを抽出する方法が考えられる。
+
+まずは \cite{serra1990spectral} に示されている従来の手法の使用を検討している。しかし、これが機能しない場合、\cite{sitranoPiano} で提案されている、ホワイトノイズと入力信号の周波数領域における乗算を用いる手法がある。ただしその場合、ノイズ成分と準調波成分の真の独立性については懸念が残る。
+
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 開発を続ける。
+    \item インフルエンザ予防接種、国際交流イベントの発表のため、来週休みます。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}
