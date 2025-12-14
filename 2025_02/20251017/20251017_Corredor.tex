@@ -1,0 +1,96 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１０月１７日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item スペインの「カタロニアシネマ・映像大学」の修士卒プロジェクトのBGMを制作。
+    \item 藝大アニメーション科のプロジェクトのBGMも制作。
+    \item 音響創造演習のプレゼンを完了。
+    \item AES学生支部, NIME, ICMC等に論文の提出を準備。
+    \item ドイツ語能力試験のC1のための勉強を開始。
+    \item インターンシップの応募が続いている。
+    \item 出身大学の後輩に、卒業研究のJUCEとC++について相談された。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item FFTウィンドウの作成方法を比較するための準備を完了。
+    \item データをCSVファイルに書き込む方法を改善。
+\end{itemize}
+
+
+\section*{考えていること}
+
+周波数の変更は期待通り音源のはじめに多く、時間が経てばたつほど、安定になる。
+
+CSVファイルから音源を生成するプログラムはまだ完了ではないため、音源は来週になる。
+
+% \begin{figure}
+% \centering
+% \includegraphics[width = 0.9\linewidth]{../../media/2025_02/EGuit_Harmonics_82Hz.png}
+% \caption{８２Hzのエレキギターの倍音エンベロープ}
+% \label{fig:eGuitHarmonics}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \includegraphics[width = 0.9\linewidth]{../../media/2025_02/AGuit_Harmonics_146.png}
+% \caption{１４６Hzのアコギターの倍音エンベロープ}
+% \label{fig:aGuitHarmonics}
+% \end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_pitch.png}
+%   \caption{トレーニングデータとして使用しているギターサンプル}
+%   \label{fig:eGuitWave}
+% \end{subfigure}%
+% \vspace{5mm}
+% \begin{subfigure}{1.0\textwidth}
+%   \centering
+%   \includegraphics[width=0.9\linewidth]{../media/training_data/20250613/elec_spectro.png}
+%   \caption{そのスペクトルグラム}
+%   \label{fig:eGuitSpectro}
+% \end{subfigure}
+% \caption{エレキギター}
+% \label{fig:elecGuit}
+% \end{figure}
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 機械学習のモデルの開発に戻る。
+    \item コロンビアの友人・知り合いを連絡、撥弦楽器の録音を依頼する。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}
