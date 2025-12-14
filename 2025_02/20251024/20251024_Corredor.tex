@@ -1,0 +1,74 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１０月２４日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item カタロニア映像大学のBGM制作が進んでいる。
+    \item 藝大のアニメ科のBGMも進んでいる。
+    \item 神天気で嬉しい。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize}
+    \item コードに集中し、まだ開発中。
+    \item Inharmonicityという概念について調べてみた。\cite{houtsma1982inharmonicity} \newline \cite{murray2022inharmonicity}も読んでみたいい。
+\end{itemize}
+
+
+\section*{考えていること}
+
+トレーニングデータを生成するプログラムの構造を大分改良し、現在状況は以下の通り：
+
+\begin{itemize}
+    \item 音程認識 \newline Pyinアルゴリズムを使用。分析しない可能性もあるため、その場合はファイルのメタデータに含まれている音程が使用される。
+    \item 周期認識 \newline 相互相関分析で各周期のゼロクロスサンプルを探り、行列に記録。分析しない場合はFFTのHop Sizeの初サンプルが記録される。
+    \item 代表的な倍音を探る \newline 音源のトランジェント数ミリ秒後から長い（65536サンプル）FFTによって最も代表的な倍音を探る。分析しない場合は32倍音未満は順番に記録される。
+    \item 倍音エンベロープ分析 \newline 周期リスト、またはHop Sizeを従い、FFT分析で各倍音のエンベロープが生成される。FFTウィンドウには3つの異なる方法が使用されている：
+    \begin{itemize}
+        \item Audio Chunk: 音源からFFTウィンドウにデータを直接に書き込む。
+        \item Single Period: 1周期のみFFTウィンドウに書き込む。ウィンドウの残りはゼロパッドされる。
+        \item Period Loop: FFTウィンドウが埋まるまで、1周期の波形を繰り返す。
+    \end{itemize}
+    \item ノイズ分析 \newline 方法検討中
+    \item トランジェント分析 \newline 方法検討中
+\end{itemize}
+
+トレーニングに向かうなお更、モデルの構造を考えている。\cite{latentSpaceInterpolation}を参考にし、シンセサイザーの「パラメーター」を倍音エンベロープとして、生成できるモデルを開発する。そのため、倍音エンベロープに留まらず、スペクトルグラムも使用する予定。
+
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item 開発を続ける。
+    \item ノイズ分析の論文を探す。
+\end{itemize}
+
+% Add your bibliography here.
+\bibliography{../../ref}
+\bibliographystyle{apalike}
+
+\end{document}
