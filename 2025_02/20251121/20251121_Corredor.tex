@@ -1,0 +1,67 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{../../ref.bib}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+% \title{進捗報告}
+% \author{コレドール・パブロ}
+% \date{２０２５年１０月１０日}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２５年１１月２１日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item 秋の色がきれい
+    \item 日本学生支援機構の留学生研究発表会に参加した（英語で）。
+\end{itemize} 
+
+\section*{やったこと}
+\begin{itemize} 
+    \item ギターの弦、音高、音色、の関係について調査。\cite{GuitarStrings}
+    \item ノイズ分析の開発が進展し続く。
+\end{itemize}
+
+\section*{考察}
+
+データ量に関する課題について
+
+機械学習においてデータ量は極めて重要ですが、一方で、楽器の録音にかかる時間や、各楽器から得られる周波数成分の多様性には著しい限りがある。また、弦楽器のフレット位置による音色や響きの変化も課題の一つである。これにより、ピッチ（音高）に関わらず、異なるフレットで押弦された音よりも、開放弦同士の方が音響特性が似通っているという傾向が見られる。
+
+これを検証するため、他の開放弦の倍音構成とエンベロープを用いて全6本の開放弦の音を生成し（今回はエレキギターとアコースティックギターの両方で、6弦、4弦、1弦のデータを使用して全弦を生成）、それをハイフレット（高音域のフレット）の音と比較した。
+
+したがって現在、各弦を独立した楽器と見なして各弦ごとに（フレットのないハープや箏を除き）最低100サンプルを録音すべきか、それとも基本周波数に関わらずフレットの区分によってグループ化すべきか、検討しているところである。開放弦同士の音色は十分に似ており、エンベロープも類似しているため、次元削減の一手法として、ある程度まとめてグループ化することが有効ではないかと考えている。 
+
+これらの問題をもっと深く調査する\cite{EstimationOfGuitarString}を拝読する予定である。
+
+\section*{やること}
+% Outline future steps here.
+\begin{itemize}
+    \item IMCMの論文を書き続ける。
+    \item \cite{EstimationOfGuitarString}を拝読する。
+    \item また開発に向く。
+\end{itemize}
+
+%開放弦
+
+% Add your bibliography here.
+\printbibliography
+
+\end{document}
