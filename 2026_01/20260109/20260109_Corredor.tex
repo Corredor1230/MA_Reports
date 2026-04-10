@@ -1,0 +1,70 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}   % Required for images
+\usepackage{subcaption}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{../../ref.bib}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２６年１月９日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+% Write your recent findings here.
+\begin{itemize}
+    \item クリスマス、正月、色々な１２月っぽいイベント等
+    \item ドン・キホーテ（小説）を読んでいる。近代スペイン語のオリジナル版なので、かなり面白い。
+\end{itemize}
+
+\section*{やったこと}
+\begin{itemize} 
+    \item ウェーブレット変換のトランジェント分析を完成。
+    \item ICMCに論文を提出。
+    \item モデル開発に入りました。
+    \item \cite{soundMorphingCaetano}を拝読。
+\end{itemize}
+
+\section*{考察}
+
+連続ウェーブレット変換は、入力信号とウェーブレット関数を畳み込むことで、時間周波数解析を行う手法である。しかし、トランジェントのような極めて短い信号においては、不確定性原理により低周波数成分の十分な解析が困難となる。 そのため、トランジェントの分析においては、「トランジェント内の高周波成分（短い周期）のみを分析する」か、あるいは「時間的な境界を広げ、周囲の信号を含めて低域まで分析する」か、という二つのアプローチの選択が必要となる。
+
+また、周波数が安定でありながら代表的な倍音に入らない成分はトランジェント窓で解析できると考えているため、トランジェントより長いウェーブレット変換を用いる方法にする。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{../../media/comparison.png}
+\caption{ウェーブレット変換と倍音分析を行った結果で生成された音源のメルスペクトルグラムの比較。左：シンセサイザーの出力。右：アコースティックギター}
+\label{melspectrogram}
+\end{figure}
+
+\cite{soundMorphingCaetano}の内容は本研究で用いられている倍音分析にかなり似ているため、論文にいい参考になると思う。
+
+\section*{やること}
+% Outline future steps here.    
+\begin{itemize}
+    \item ウェーブレット変換の長さを変更して、結果を比較。
+    \item モデル開発に戻る。
+    \item 後期の課題を無事に終わらせるように・・・
+\end{itemize}
+
+%開放弦
+
+% Add your bibliography here.
+\printbibliography
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{graphicx}   % Required for images
+\usepackage{subcaption}
+\usepackage{paracol}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{../../ref.bib}
+
+\geometry{margin=1in}
+\setCJKmainfont{MS Mincho}
+
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+\titlespacing*{\subsection}{0pt}{1ex}{0.8ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.5ex}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \bfseries 進捗報告} \\ % Title: Large and bold
+    \vspace{0.3em} % A small vertical space
+    Juan Pablo Corredor \\ % Author
+    ２０２６年４月１０日 % Date
+\end{center}
+\vspace{0.5em} % Adjust space between title block and main text
+
+\section*{近況}
+\begin{itemize}
+    \item 母が日本に来ていたので、案内で忙しくしていました。
+    \item 就職活動を進めています。
+    \item 最近、風邪から回復しました。
+    \item この授業の直前に、上級ドイツ語の授業を受けています。
+    \item 音楽音響研究会で発表を行いました。
+\end{itemize}
+
+\section*{研究の紹介}
+\begin{itemize}
+    \item 撥弦楽器の音声合成について研究しています。
+    \item 具体的には、音をシンプルなデータ構造に分解し、2つの音を混ぜ合わせて新しいデジタルの撥弦楽器を作る手法を研究しています。
+    \item これまである程度の成果が出ており、現在はコードをきれいにし、精度を向上させているところです。
+\end{itemize}
+
+\section*{やったこと}
+\begin{itemize}
+    \item 音を分解する前に、中央フィルタリングを使って信号を分割する処理を進めています。\cite{fitzgerald2010harmonic}
+    \item 移植性とメモリのパフォーマンスを大幅に向上させるため、すべてのコードをRustで書き直し始めました。
+    \item トランジェント（アタック音）のデータサイズを減らすのに苦労しています。ウェーブレット変換では不十分でした。
+    \item 生の波形のトランジェントと、補間した倍音（ハーモニック）信号を混ぜて使うことも検討しています。
+    \item 修士論文の草稿（特に参考文献、先行研究、現在の手法について）を書き始めました。
+\end{itemize}
+
+\section*{考えること}
+\begin{itemize}
+    \item 音楽音響研究会でもらったフィードバックのおかげで、いくつかの手法を考え直すことができました。主にトランジェントの分析方法と、分析前の元の音声データの処理方法についてです。
+    \item 来週には、新しいアイデアのプロトタイプが動くようになる予定です。
+\end{itemize}
+
+\section*{来週の計画}
+\begin{itemize}
+    \item 引き続きRustでのコーディングを進める。
+    \item メディアンフィルタリングとトランジェントの分解の作業を続ける。
+    \item できるだけ多く論文を執筆する。
+\end{itemize}
+
+%開放弦
+
+% Add your bibliography here.
+\printbibliography
+
+\end{document}
